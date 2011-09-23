@@ -1,2 +1,2 @@
-name "mongoserver" 
-run_list "recipe[monit]", "recipe[mongodb]"
+name "mongoserver"
+run_list 'role[host]', "recipe[monit]", "recipe[mongodb]"
