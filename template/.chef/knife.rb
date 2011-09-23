@@ -1,5 +1,14 @@
-# Fill in the values below
-# generate rsa keys for client and validatior
+# How to configure this file
+#
+# * Generate a knife.rb using the opscode website
+# * Overwrite this file with the newly generated knife.rb
+# * Generate client key using opscode website
+# * Generate validator key using opscode website
+# * Copy client key file into .chef directory (where this file is)
+# * Copy validator key file into .chef directory (where this file is)
+#
+# Once you've done that you need configu the .chef/bootstrap/client.rb file
+# as directed there before chef will work correctly.
 #
 raise ".chef/knife.rb needs to be configured"
 

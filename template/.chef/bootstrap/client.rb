@@ -1,5 +1,15 @@
-# Fill in the values below
-# also copy your .chef/<validatior name>.pem file to .chef/bootstrap/validation.pem
+# How to configure this file
+#
+# * Copy your validator key file from
+#   .chef to .chef/boostrap/validation.pem
+#
+# * Set the chef_server_url value below to
+#   match the one in the opscode generated knife.rb file
+#
+# * Set the validation_client_name value below to
+#   match the one in the opscode generated knife.rb file
+#
+# * Remove the raise line below
 #
 raise ".chef/bootstrap/client.rb needs to be configured"
 
