@@ -1,0 +1,27 @@
+#!/bin/sh
+
+NAME=$1
+COOKBOOKS_DIR=$(basename `pwd`)
+
+if test "$NAME" == ""; then
+  echo "Usage: ./new_chef_repo repo_name";
+  exit 1;
+fi
+
+echo "Creating chef repo $NAME"
+
+mkdir ../$NAME
+git init ../$NAME
+
+cp -r template/* template/.chef template/.gitignore ../$NAME/.
+
+(cd ../$NAME && git add -A .)
+(cd ../$NAME && git commit -m "Initial Template")
+
+echo "There is now a chef repo at ../$NAME"
+echo "Symlinking cookbooks and roles in"
+
+(cd ../$NAME && ln -s ../$COOKBOOKS_DIR/cookbooks .)
+(cd ../$NAME && ln -s ../$COOKBOOKS_DIR/roles .)
+
+echo "Repo is now ready for your configuration"
