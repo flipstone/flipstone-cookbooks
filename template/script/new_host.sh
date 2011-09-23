@@ -6,7 +6,7 @@ AMI="<Your ami, e.g. ami-f0e20899>"
 ZONE="<Your zone, e.g. us-east-1a>"
 EC2_SSH_KEY_ID="<Your SSH key id>"
 SSH_IDENTITY="<Your SSH identity, e.g. -i ~/.ssh/<private-key-file> -x <username>>"
-GROUPS="<Your security groups. e.g. webserver,public>"
+SECURITY_GROUPS="<Your security groups. e.g. webserver,public>"
 
 # BEGIN SECTION TO REMOVE ONCE CONFIGURED
 echo "****"
@@ -36,7 +36,7 @@ do
 done
 
 
-COMMAND="knife ec2 server create -r 'role[host]' --groups $GROUPS $NAME --flavor $SIZE -I $AMI -Z $ZONE -S $EC2_SSH_KEY_ID $SSH_IDENTITY"
+COMMAND="knife ec2 server create -r 'role[host]' --groups $SECURITY_GROUPS $NAME --flavor $SIZE -I $AMI -Z $ZONE -S $EC2_SSH_KEY_ID $SSH_IDENTITY"
 echo $COMMAND
 $COMMAND
 
