@@ -21,7 +21,6 @@ cp -r template/* template/.chef template/.gitignore ../$NAME/.
 echo "There is now a chef repo at ../$NAME"
 echo "Symlinking cookbooks and roles in"
 
-(cd ../$NAME && ln -s ../$COOKBOOKS_DIR/cookbooks .)
-(cd ../$NAME && ln -s ../$COOKBOOKS_DIR/roles .)
+(cd ../$NAME && ./script/checkout_cookbook)
 
 echo "Repo is now ready for your configuration"
