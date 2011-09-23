@@ -23,18 +23,23 @@ package "git-core"
 %w(libreadline5-dev zlib1g-dev libssl-dev libxml2-dev libxslt1-dev).each do |pkg|
   package pkg
 end
- 
+
 bash "install RVM" do
   user "root"
   code "bash <( curl -L https://raw.github.com/wayneeseguin/rvm/1.2.0/contrib/install-system-wide ) --version 1.7.2"
-  not_if "rvm --version | grep 'rvm 1.7.2'"
+  not_if "rvm --version | grep 'rvm 1.7.1'" # doesn't report as 1.7.2 for some reason?
+end
+
+cookbook_file "/usr/local/bin/rvm" do
+  source "rvm_binary"
+  mode "0655"
 end
 
 cookbook_file "/etc/profile.d/rvm.sh" do
   source "rvm.sh"
   mode "0655"
 end
- 
+
 bash "install 1.9.2 in RVM" do
   user "root"
   code "rvm install 1.9.2"
