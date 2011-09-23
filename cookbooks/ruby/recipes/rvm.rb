@@ -26,8 +26,8 @@ end
  
 bash "install RVM" do
   user "root"
-  code "bash <( curl -L https://raw.github.com/wayneeseguin/rvm/1.2.0/contrib/install-system-wide ) --version 1.2.0"
-  not_if "which rvm"
+  code "bash <( curl -L https://raw.github.com/wayneeseguin/rvm/1.2.0/contrib/install-system-wide ) --version 1.7.2"
+  not_if "rvm --version | grep 'rvm 1.7.2'"
 end
 
 cookbook_file "/etc/profile.d/rvm.sh" do
