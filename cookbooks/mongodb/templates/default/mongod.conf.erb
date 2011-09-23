@@ -1,0 +1,11 @@
+# mongod upstart job file
+# /etc/init/mongod.conf
+# This configuration manages mongod
+
+description "start mongod"
+
+start on runlevel [23]
+stop on runlevel [01456]
+
+exec <%= node[:mongod][:binary] %> --port <%= node[:mongod][:port] %> --logpath <%= node[:mongod][:logpath] %>
+respawn

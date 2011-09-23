@@ -1,0 +1,3 @@
+check process nginx with pidfile <%= node[:nginx][:pidfile] %>
+  start program = "/sbin/start nginx"
+  stop program = "/sbin/stop nginx"

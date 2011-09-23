@@ -1,0 +1,11 @@
+# beanstalkd upstart job file
+# /etc/init/beanstalkd.conf
+# This configuration manages beanstalkd
+
+description "start beanstalkd"
+
+start on runlevel [23]
+stop on runlevel [01456]
+
+exec <%= node[:beanstalkd][:binary] %> -l 127.0.0.1 -p <%= node[:beanstalkd][:port] %> -u <%= node[:beanstalkd][:user] %> 
+respawn

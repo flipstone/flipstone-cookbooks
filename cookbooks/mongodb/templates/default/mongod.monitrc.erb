@@ -1,0 +1,4 @@
+check host localhost_mongo with address 127.0.0.1
+  start program = "/sbin/start mongod"
+  stop program = "/sbin/stop mongod"
+  if failed port <%= node[:mongod][:port] %> type tcp then restart

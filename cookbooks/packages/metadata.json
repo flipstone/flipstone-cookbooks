@@ -1,0 +1,63 @@
+{
+    "license": "Apache 2.0",
+    "maintainer_email": "cookbooks@opscode.com",
+    "recipes": {
+      "packages": "Empty, this cookbook provides a library for helping determine whther distribution only packages should be installed"
+    },
+    "groupings": {
+    },
+    "long_description": "",
+    "recommendations": {
+    },
+    "dependencies": {
+    },
+    "suggestions": {
+    },
+    "description": "Helper library to determine whether distribution-only packages are installed",
+    "platforms": {
+      "centos": [
+
+      ],
+      "redhat": [
+
+      ]
+    },
+    "version": "0.9.2",
+    "conflicting": {
+    },
+    "providing": {
+    },
+    "name": "packages",
+    "maintainer": "Opscode, Inc.",
+    "attributes": {
+      "packages": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "hash",
+        "recipes": [
+
+        ],
+        "display_name": "Packages",
+        "description": "Hash of Packages attributes"
+      },
+      "packages/dist_only": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "false",
+        "type": "string",
+        "recipes": [
+
+        ],
+        "display_name": "Packages Distribution Only?",
+        "description": "Set to only use distribution-provided packages"
+      }
+    },
+    "replacing": {
+    }
+  }

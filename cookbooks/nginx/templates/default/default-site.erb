@@ -1,0 +1,8 @@
+server {
+  listen        80 default;
+  server_name   _;
+  
+  access_log    <%= node[:nginx][:log_dir] %>/localhost.access.log;
+
+  deny          all;
+}

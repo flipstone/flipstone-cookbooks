@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+#
+# This file overwrites the rubygems-generated file.  
+#
+# It's the same, but replaces:
+# shebang /usr/bin/ruby1.8
+#
+# with
+#
+# shebang /usr/bin/env ruby
+#
+# The application 'bundler' is installed as part of a gem, and
+# this file is here to facilitate running it.
+#
+
+require 'rubygems'
+
+version = ">= 0"
+
+if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
+  version = $1
+  ARGV.shift
+end
+
+gem 'bundler', version
+load Gem.bin_path('bundler', 'bundle', version)

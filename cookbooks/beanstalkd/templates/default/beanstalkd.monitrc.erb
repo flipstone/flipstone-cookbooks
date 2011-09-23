@@ -1,0 +1,4 @@
+check host localhost with address 127.0.0.1
+  start program = "/sbin/start beanstalkd"
+  stop program = "/sbin/stop beanstalkd"
+  if failed host 127.0.0.1 port <%= node[:beanstalkd][:port] %> type tcp then restart

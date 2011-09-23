@@ -1,0 +1,41 @@
+#!/bin/sh -e
+
+SYSCONFDIR='<%= node[:nginx][:dir] %>'
+
+if [ -z $1 ]; then
+        echo "Which site would you like to enable?"
+        echo -n "Your choices are: "
+        ls $SYSCONFDIR/sites-available/* | \
+        sed -e "s,$SYSCONFDIR/sites-available/,,g" | xargs echo
+        echo -n "Site name? "
+        read SITENAME
+else
+        SITENAME=$1
+fi
+
+if [ -z $2 ]; then
+        TARGETSITE=SITENAME
+else
+        TARGETSITE=$2
+fi
+
+if [ -z $3 ]; then
+        SITESOURCE=$SYSCONFDIR/sites-available/$SITENAME
+else
+        SITESOURCE=$3
+fi
+
+if [ -e $SYSCONFDIR/sites-enabled/$TARGETSITE -o \
+     -e $SYSCONFDIR/sites-enabled/"$SITENAME" ]; then
+        echo "This site is already enabled!"
+        exit 0
+fi
+
+if ! [ -e $SITESOURCE ]; then
+        echo "This site does not exist!"
+        exit 1
+fi
+
+ln -sf $SITESOURCE $SYSCONFDIR/sites-enabled/$TARGETSITE
+
+echo "Site $TARGETSITE installed; reload nginx to enable."
