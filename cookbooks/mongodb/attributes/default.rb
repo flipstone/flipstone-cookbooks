@@ -1,4 +1,4 @@
-default[:mongod][:version]      = "1.9.0"
+default[:mongod][:version]      = "2.0.0"
 
 default[:mongod][:log_dir] = "/var/log/mongod"
 default[:mongod][:logpath] = "/var/log/mongod/mongo.out"
