@@ -74,17 +74,21 @@ if node[:mongod][:persistent]
     action [ :create, :attach ]
   end
 
+  # on natty narwhal devices come up as /dev/xvdi.
+  # Universal support would need to check for each device name.
+  linux_device = node[:mongod][:volume_device].sub('/dev/s','/dev/xv')
+
   if old_aws_info.nil? ||
      old_aws_info['ebs_volume'].nil? ||
      old_aws_info['ebs_volume']['mongod-data-volume'].nil?
 
     execute "format mongo-data-value" do
-      command "mkfs.ext3 -F #{node[:mongod][:volume_device]}"
+      command "mkfs.ext3 -F #{linux_device}"
     end
   end
 
   mount node[:mongod][:data_dir] do
-    device node[:mongod][:volume_device]
+    device linux_device
     fstype "ext3"
     action :mount
     notifies :restart, 'service[mongod]'
