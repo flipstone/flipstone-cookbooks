@@ -14,7 +14,7 @@ beanstalkd_version = node[:beanstalkd][:version]
 gzip_file = "beanstalkd-#{beanstalkd_version}.tar.gz"
 
 remote_file "/tmp/#{gzip_file}" do
-  source "http://xph.us/dist/beanstalkd/#{gzip_file}"
+  source "https://github.com/downloads/kr/beanstalkd/#{gzip_file}"
   action :create_if_missing
 end
 
