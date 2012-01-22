@@ -18,7 +18,20 @@
 # limitations under the License.
 #
 
-package 'wkhtmltopdf' do
-  action :install
+
+%w(openssl build-essential xorg libssl-dev).each { |p| package p }
+
+bash "download and install wkhtmltopdf" do
+  user "root"
+  cwd "/tmp"
+
+  code <<-end_code
+    wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.9.9-static-i386.tar.bz2
+    tar xfj wkhtmltopdf-0.9.9-static-i386.tar.bz2
+    cp wkhtmltopdf-i386 /usr/local/bin/wkhtmltopdf
+    chmod +x /usr/local/bin/wkhtmltopdf
+  end_code
+
+  not_if { File.executable?("/usr/local/bin/wkhtmltopdf") }
 end
 
