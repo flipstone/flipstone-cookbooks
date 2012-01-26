@@ -2,7 +2,7 @@
 # Install the bundler gem
 #
 
-BundlerVersion = "1.0.10"
+BundlerVersion = "1.0.21"
 
 execute "Install bundler to 1.9.2" do
   command "rvm 1.9.2 exec gem install bundler -v#{BundlerVersion}"
