@@ -7,5 +7,5 @@ description "start mongod"
 start on runlevel [23]
 stop on runlevel [01456]
 
-exec <%= node[:mongod][:binary] %> --port <%= node[:mongod][:port] %> --logpath <%= node[:mongod][:logpath] %>
+exec <%= node[:mongod][:binary] %> --port <%= node[:mongod][:port] %> --logpath <%= node[:mongod][:logpath] %> --journal
 respawn
