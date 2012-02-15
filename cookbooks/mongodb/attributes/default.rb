@@ -9,6 +9,7 @@ default[:mongod][:upstart_config] = "/etc/init/mongod.conf"
 default[:mongod][:persistent] = false
 default[:mongod][:volume_size] = 50
 default[:mongod][:volume_device] = '/dev/sdi'
+default[:mongod][:repl_set] = 'mongo-replset'
 
 default[:mongod][:port] = 27017
 default[:mongod][:user] = "root"
