@@ -54,3 +54,9 @@ bash "compile_haskell_platform" do
   EOH
   creates "/usr/local/bin/cabal"
 end
+
+bash "install_cabal_dev_package" do
+  cwd "/tmp"
+  code "cabal install cabal-dev-0.9.1 --global"
+  creates "/usr/local/bin/cabal-dev"
+end
