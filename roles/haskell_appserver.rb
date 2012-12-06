@@ -4,4 +4,7 @@
 #
 
 name "haskell_appserver"
-run_list "role[appserver]", "role[webserver]", "recipe[haskell::default]"
+run_list "role[appserver]",
+         "role[webserver]",
+         "recipe[haskell::default]",
+         "recipe[haskell::ghc-7.4.2]"
