@@ -14,9 +14,9 @@ bash "install_ghc_binary" do
   code <<-EOH
     tar xfj #{archive}
     cd #{ghc}
-    ./configure --prefix /opt/#{ghc}/#{version}
+    ./configure --prefix /opt/ghc/#{version}
     make install
   EOH
-  creates "/usr/ghc/#{version}/bin/ghc"
+  creates "/opt/ghc/#{version}/bin/ghc"
 end
 
