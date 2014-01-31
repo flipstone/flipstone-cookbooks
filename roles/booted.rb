@@ -1,2 +1,2 @@
 name "booted"
-run_list ""
+run_list []

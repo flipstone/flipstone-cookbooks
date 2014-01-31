@@ -14,6 +14,18 @@ apt_repository 'docker' do
   key          'https://get.docker.io/gpg'
 end
 
+ruby_block "reboot_after_run" do
+  block do
+    node.run_state['reboot'] = true
+  end
+  action :nothing
+end
+
+package "linux-image-generic-lts-raring" do
+  notifies :create, "ruby_block[reboot_after_run]", :immediately
+end
+package "linux-headers-generic-lts-raring"
+
 package "lxc-docker" do
   version "0.7.6"
   action :install
