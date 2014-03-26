@@ -19,8 +19,20 @@
 #
 
 require_recipe "monit"
+include_recipe 'apt'
 
-package "nginx"
+apt_repository 'nginx' do
+  uri          'http://ppa.launchpad.net/nginx/stable/ubuntu'
+  distribution node['lsb']['codename']
+  components   ['main']
+  keyserver    'keyserver.ubuntu.com'
+  key          'C300EE8C'
+end
+
+package "nginx" do
+  version "1.4.6-1+#{node['lsb']['codename']}0"
+  options "--assume-no"
+end
 
 directory node[:nginx][:log_dir] do
   mode 0755
