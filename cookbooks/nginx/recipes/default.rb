@@ -30,7 +30,7 @@ apt_repository 'nginx' do
 end
 
 package "nginx" do
-  version "1.4.6-1+#{node['lsb']['codename']}0"
+  version "1.6.2-5+#{node['lsb']['codename']}0"
   options "--assume-no"
 end
 

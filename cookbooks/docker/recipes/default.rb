@@ -26,8 +26,7 @@ package "linux-image-generic-lts-raring" do
 end
 package "linux-headers-generic-lts-raring"
 
-package "lxc-docker" do
-  version "1.2.0"
+package "lxc-docker-1.2.0" do
   action :install
 end
 
